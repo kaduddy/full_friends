@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+</head>
+	<body>
+		<h1>Friends</h1>
+		<h1>Add a Friend!</h1>
+		<form action="/friends" method="post">
+		First Name: <input type="text" name="first_name">
+		Last Name: <input type="text" name="last_name">
+		Occupation: <input type="text" name="occupation">
+		<input type="submit" value="Submit">
+		</form>
+		{% for friend in friends: %}
+			<p>First Name: {{friend['first_name']}}</p>
+			<p>Last Name: {{friend['last_name']}}</p>
+			<p>Occupation: {{friend['occupation']}}</p>
+			<form action="/friends/{{friend["id"]}}/edit" method = "get">
+				<input type="submit" value="edit">
+			</form>
+			<form action="/friends/{{friend["id"]}}/delete" method = "post">
+				<input type="submit" name="delete" value="delete">
+			</form>
+		{% endfor %}
+
+	</body>
+</html>
